@@ -9,6 +9,7 @@ const CardInfo = (props) => {
     if (data) {
       return data.name
     }
+    return false
   }
 
   return (

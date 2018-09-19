@@ -14,7 +14,7 @@
     "react/no-unused-state": [1],
     "react/prop-types": [0],
     "react/no-array-index-key": [0],
-    "react/no-access-state-in-setstate": [1],
+    "react/no-access-state-in-setstate": [0],
     "no-unused-vars": [1],
     "no-console": [0],
     "consistent-return": [1],

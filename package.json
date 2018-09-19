@@ -48,6 +48,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "dev-serv": "json-server --watch db.json --port 3005",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
