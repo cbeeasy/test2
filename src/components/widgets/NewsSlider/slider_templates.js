@@ -7,6 +7,10 @@ import styles from './slider.css'
 const SliderTemplates = (props) => {
   let template = null
 
+  // *** IMPORTANT (ES6) ...props.settings
+  // les valeurs préalables sont par défaut
+  // si props.settings est défini --> override !!! ***
+  // cf home.js
   const settings = {
     dots: true,
     infinite: true,

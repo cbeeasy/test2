@@ -9,9 +9,10 @@ const Home = () => (
     <NewsSlider
       type='featured'
       start={0}
-      amount={3}
+      amount={10}
+      // **** on onverride settings !!! cf ...props.settings dans slider_templates.js
       settings={{
-        dots: false
+        dots: true
       }}
     />
     <NewsList type='card' loadmore start={3} amount={3} />
