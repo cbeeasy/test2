@@ -33,6 +33,7 @@ class NewsList extends Component {
 
     axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then((response) => {
       this.setState({
+        // IMPORTANT ***  on garde this.state.items et on rajoute response.data  ***
         items: [...this.state.items, ...response.data],
         start,
         end
