@@ -16,8 +16,8 @@ const Home = () => (
       }}
     />
     {/* } Attention 5 est lié avec amount={5} */}
-    <NewsList type='card' loadmore start={5} amount={5} />
-    <VideosList type='card' title loadmore start={0} amount={5} />
+    {/* <NewsList type='card' loadmore start={5} amount={5} />
+    <VideosList type='card' title loadmore start={0} amount={5} /> */}
   </div>
 )
 
