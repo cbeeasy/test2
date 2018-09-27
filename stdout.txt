@@ -1,0 +1,14 @@
+yarn run v1.9.4
+$ node scripts/start.js
+Starting the development server...
+
+Compiled successfully!
+
+You can now view nba1 in the browser.
+
+  Local:            http://localhost:3000/
+  On Your Network:  http://192.168.0.10:3000/
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
