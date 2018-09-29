@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
-import { firebaseArticles, firebaseLooper } from '../../../firebase'
 
 import SliderTemplates from './slider_templates'
+// import axios from 'axios'
 // import { URL } from '../../../config'
+import { firebaseArticles, firebaseLooper } from '../../../firebase'
 
 class NewsSlider extends Component {
   state = {
@@ -12,7 +12,7 @@ class NewsSlider extends Component {
 
   componentWillMount () {
     firebaseArticles
-      .limitToFirst(3)
+      .limitToFirst(this.props.amount)
       .once('value')
       .then((snapshot) => {
         const news = firebaseLooper(snapshot)

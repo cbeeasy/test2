@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+
+import { firebaseTeams, firebaseVideos, firebaseLooper } from '../../../firebase'
+
 import styles from './videosList.css'
 
-import { URL } from '../../../config'
+// import { URL } from '../../../config'
 import Button from '../Buttons/buttons'
 import VideosListTemplate from './videosListTemplate'
 
@@ -19,22 +22,53 @@ class VideosList extends Component {
     this.request(this.state.start, this.state.end)
   }
 
+  componentWillUnmount () {
+    this.setState({
+      videos: []
+    })
+  }
+
   request = (start, end) => {
+    // if (this.state.teams.length < 1) {
+    //   axios.get(`${URL}/teams`).then((response) => {
+    //     this.setState({
+    //       teams: response.data
+    //     })
+    //   })
+    // }
+
+    // axios.get(`${URL}/videos?_start=${start}&_end=${end}`).then((response) => {
+    //   this.setState({
+    //     videos: [...this.state.videos, ...response.data],
+    //     start,
+    //     end
+    //   })
+    // })
     if (this.state.teams.length < 1) {
-      axios.get(`${URL}/teams`).then((response) => {
+      firebaseTeams.once('value').then((snapshot) => {
+        const teams = firebaseLooper(snapshot)
         this.setState({
-          teams: response.data
+          teams
         })
       })
     }
 
-    axios.get(`${URL}/videos?_start=${start}&_end=${end}`).then((response) => {
-      this.setState({
-        videos: [...this.state.videos, ...response.data],
-        start,
-        end
+    firebaseVideos
+      .orderByChild('id')
+      .startAt(start)
+      .endAt(end)
+      .once('value')
+      .then((snapshot) => {
+        const videos = firebaseLooper(snapshot)
+        this.setState({
+          videos: [...this.state.videos, ...videos],
+          start,
+          end
+        })
       })
-    })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 
   renderVideos = () => {
@@ -52,7 +86,8 @@ class VideosList extends Component {
 
   loadMore = () => {
     const end = this.state.end + this.state.amount
-    this.request(this.state.end, end)
+    // this.request(this.state.end, end)
+    this.request(this.state.end + 1, end)
   }
 
   renderButton = () => (this.props.loadmore ? (

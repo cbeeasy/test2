@@ -9,15 +9,15 @@ const Home = () => (
     <NewsSlider
       type='featured'
       start={0}
-      amount={5}
+      amount={3}
       // **** on onverride settings !!! cf ...props.settings dans slider_templates.js
       settings={{
         dots: true
       }}
     />
     {/* } Attention 5 est lié avec amount={5} */}
-    {/* <NewsList type='card' loadmore start={5} amount={5} />
-    <VideosList type='card' title loadmore start={0} amount={5} /> */}
+    <NewsList type='card' loadmore start={0} amount={3} />
+    <VideosList type='card' title loadmore start={0} amount={3} />
   </div>
 )
 
